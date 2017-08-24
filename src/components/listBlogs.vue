@@ -1,6 +1,6 @@
 <template>
     <div v-theme:column="'narrow'" id="showBlogs">
-        <h1>All Blog Articles</h1>
+        <h1>List Blog Titles</h1>
         <input type="text" v-model="search" placeholder="Search Blogs">
         <div v-for="blog in filterBlogs" class="singleBlog">
             <h2 v-rainbow>{{blog.title|toUppercase}}</h2>
@@ -12,6 +12,7 @@
 <script>
     import searchMixin from '../mixins/searchMixin';
     export default {
+
         data () {
             return {
                 blogs: [],
@@ -22,10 +23,10 @@
 
         },
         created() {
-          this.$http.get('https://jsonplaceholder.typicode.com/posts').then(function (data) {
-              this.blogs = data.body.slice(0, 10);
+            this.$http.get('https://jsonplaceholder.typicode.com/posts').then(function (data) {
+                this.blogs = data.body.slice(0, 10);
 
-          })
+            })
         },
         computed: {
 
@@ -47,10 +48,10 @@
 </script>
 
 <style>
-     #showBlogs {
-         max-width: 800px;
-         margin: 0 auto;
-     }
+    #showBlogs {
+        max-width: 800px;
+        margin: 0 auto;
+    }
     .singleBlog {
         padding: 20px;
         margin: 20px 0;
