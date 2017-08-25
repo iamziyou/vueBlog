@@ -2,8 +2,11 @@
     <div v-theme:column="'wide'" id="showBlogs">
         <h1>All Blog Articles</h1>
         <input type="text" v-model="search" placeholder="Search Blogs">
-        <div v-for="blog in filterBlogs" class="singleBlog">
-            <router-link v-bind:to="'/blog/' + blog.id">
+        <div v-for="blog in posts"  class="singleBlog">
+            <span v-on:click="removePost(blog)">
+                <i class="fa fa-remove"></i>
+            </span>
+            <router-link v-bind:to="'/blog/' + blog['.key']">
                 <h2 v-rainbow>{{blog.title|toUppercase}}</h2>
             </router-link>
             <article>{{blog.content|snippet}}</article>
@@ -13,6 +16,20 @@
 
 <script>
     import searchMixin from '../mixins/searchMixin';
+    import firebase from 'firebase';
+
+    let config = {
+        apiKey: "AIzaSyCRqhurJH31mNe_5Ywnj-3nMjwtukiDM4s",
+        authDomain: "vuejs-f4ccc.firebaseapp.com",
+        databaseURL: "https://vuejs-f4ccc.firebaseio.com",
+        projectId: "vuejs-f4ccc",
+        storageBucket: "vuejs-f4ccc.appspot.com",
+        messagingSenderId: "996317667542"
+    };
+    firebase.initializeApp(config);
+
+    let postsRef = firebase.database().ref('posts');
+
     export default {
         data () {
             return {
@@ -21,6 +38,11 @@
             }
         },
         methods: {
+            removePost: function (blog) {
+                postsRef.child(blog['.key']).remove();
+            }
+        },
+        computed: {
 
         },
         created() {
@@ -35,8 +57,8 @@
               this.blogs = blogsArray;
           })
         },
-        computed: {
-
+        firebase: {
+            posts: postsRef
         },
         filters: {
             toUppercase(value) {
@@ -93,4 +115,9 @@
         width: 100%;
         box-sizing: border-box;
     }
+    span {
+        position: absolute;
+        right: 200px;
+    }
+
 </style>

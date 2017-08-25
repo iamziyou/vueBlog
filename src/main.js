@@ -3,14 +3,23 @@ import App from './App.vue'
 import VueResource from  'vue-resource'
 import VueRouter from 'vue-router'
 import Routes from './routes'
+import VueFire from 'vuefire'
 
 Vue.use(VueResource);
 Vue.use(VueRouter);
+Vue.use(VueFire);
 
 const router = new VueRouter({
   routes: Routes,
     mode: 'history'
 });
+
+new Vue({
+  el: '#app',
+  render: h => h(App),
+    router: router
+});
+
 
 // Directives
 
@@ -44,9 +53,3 @@ const router = new VueRouter({
 // Vue.filter('snippet', function (value) {
 //     return value.slice(0, 100) + "...";
 // });
-
-new Vue({
-  el: '#app',
-  render: h => h(App),
-    router: router
-});

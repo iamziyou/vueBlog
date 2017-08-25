@@ -11,19 +11,19 @@
   import listBlogs from './components/listBlogs.vue';
   import header from './components/header.vue';
 
-export default {
-    components: {
-      'addBlog' : addBlog,
-      'showBlogs' : showBlogs,
+  export default {
+      components: {
+        'addBlog' : addBlog,
+        'showBlogs' : showBlogs,
         'listBlogs': listBlogs,
         'appHeader': header
-    },
-  data () {
-    return {
+      },
+      data () {
+        return {
 
-    }
+        }
+      },
   }
-}
 </script>
 
 <style>
