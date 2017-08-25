@@ -11,7 +11,7 @@
 
 </script>
 
-<style>
+<style scoped="">
     ul {
         list-style-type: none;
         text-align: center;
@@ -24,8 +24,8 @@
     a{
         color: #fff;
         text-decoration: none;
-        padding: 6px 8px;
-        border-radius: 10px;
+        padding: 12px;
+        border-radius: 5x;
     }
     nav {
         background: #444;
@@ -33,7 +33,7 @@
         margin-bottom: 40px;
     }
     .router-link-active {
-        background: #eee;
+        background: rgba(255, 255, 255, 0.8);
         color: #444;
     }
 </style>

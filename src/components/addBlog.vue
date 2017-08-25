@@ -57,11 +57,7 @@
         },
         methods: {
             post:function () {
-                this.$http.post('https://jsonplaceholder.typicode.com/posts', {
-                   title: this.blog.title,
-                   body: this.blog.content, 
-                    userID: 1
-                }).then(function (data) {
+                this.$http.post('https://vuejs-f4ccc.firebaseio.com/posts.json', this.blog).then(function (data) {
                     this.submitted = true;
                 });
             }
@@ -69,7 +65,7 @@
     }
 </script>
 
-<style>
+<style scoped="">
     #addBlog* {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
@@ -88,6 +84,9 @@
         width: 100%;
         padding: 8px;
     }
+    textarea {
+        height: 200px;
+    }
     #preview {
         padding: 10px 20px;
         border: 1px dotted #ccc;
@@ -102,5 +101,20 @@
     }
     #checkboxes label {
         display: inline-block;
+        margin-top: 0;
+    }
+    hr {
+        display: none;
+    }
+    button {
+        display: block;
+        margin: 20px 0;
+        background: crimson;
+        color: #fff;
+        border: 0;
+        padding: 14px;
+        border-radius: 4px;
+        font-size: 18px;
+        cursor: pointer;
     }
 </style>
