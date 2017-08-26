@@ -16,7 +16,7 @@
         'addBlog' : addBlog,
         'showBlogs' : showBlogs,
         'listBlogs': listBlogs,
-        'appHeader': header
+        'appHeader': header,
       },
       data () {
         return {

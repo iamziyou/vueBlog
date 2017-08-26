@@ -8,9 +8,11 @@
             </span>
             <router-link v-bind:to="'/blog/' + blog['.key']">
                 <h2 v-rainbow>{{blog.title|toUppercase}}</h2>
+
             </router-link>
             <article>{{blog.content|snippet}}</article>
         </div>
+
     </div>
 </template>
 
@@ -115,9 +117,13 @@
         width: 100%;
         box-sizing: border-box;
     }
-    span {
-        position: absolute;
-        right: 200px;
-    }
+    span .fa-remove {
+         position: absolute;
+         right: 180px;
+     }
+     span .fa-edit {
+         position: absolute;
+         right: 200px;
+     }
 
 </style>

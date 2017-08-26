@@ -41,7 +41,6 @@
 
 <script>
 
-
     export default {
         data () {
             return {
@@ -52,7 +51,7 @@
                     author: ""
                 },
                 authors: ['The Net Ninja', 'The Angular Avenger', 'The Vue Vindicator'],
-                submitted: false
+                submitted: false,
             }
         },
         methods: {

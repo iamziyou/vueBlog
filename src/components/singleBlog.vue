@@ -6,17 +6,17 @@
         <ul>
             <li v-for="category in blog.categories">{{category}}</li>
         </ul>
+        <div class="fb-comments" v-bind:data-href="'http://localhost:8080/blog/' + this.id" data-numposts="5"></div>
     </div>
 </template>
 
 <script>
+
     export default {
         data() {
             return {
                 id: this.$route.params.id,
-                blog: {
-
-                }
+                blog: {},
             }
         },
         created() {
@@ -25,7 +25,10 @@
             }).then(function (data) {
                 this.blog = data;
             })
-        }
+        },
+        mounted(){
+            FB.XFBML.parse();
+        },
     }
 </script>
 
