@@ -5,7 +5,8 @@
             <label for="">Blog Title:</label>
             <input type="text" v-model.lazy="blog.title" required >
             <label for="">Blog Content:</label>
-            <textarea v-model.lazy="blog.content"></textarea>
+            <!--<textarea v-model.lazy="blog.content"></textarea>-->
+            <ckeditor v-model="blog.content" :config="config" @blur="onBlur($event)" @focus="onFocus($event)"></ckeditor>
             <div id="checkboxes">
                 <label for="">Ninjas</label>
                 <input type="checkbox" value="ninjas" v-model="blog.categories">
@@ -40,8 +41,12 @@
 </template>
 
 <script>
+    import Ckeditor from 'vue-ckeditor2';
 
     export default {
+        components: {
+            Ckeditor
+        },
         data () {
             return {
                 blog: {
@@ -52,6 +57,13 @@
                 },
                 authors: ['The Net Ninja', 'The Angular Avenger', 'The Vue Vindicator'],
                 submitted: false,
+                config: {
+                    toolbar: [
+                        ['Bold', 'Italic', 'Underline', 'Strike', 'Superscript']
+                    ],
+                    height: 300,
+                    autoParagraph: false
+                }
             }
         },
         methods: {
@@ -59,8 +71,14 @@
                 this.$http.post('https://vuejs-f4ccc.firebaseio.com/posts.json', this.blog).then(function (data) {
                     this.submitted = true;
                 });
-            }
-        }
+            },
+            onBlur(editor) {
+                console.log(editor);
+            },
+            onFocus(editor) {
+                console.log(editor);
+            },
+        },
     }
 </script>
 
