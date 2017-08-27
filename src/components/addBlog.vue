@@ -59,7 +59,7 @@
                 submitted: false,
                 config: {
                     toolbar: [
-                        ['Bold', 'Italic', 'Underline', 'Strike', 'Superscript']
+
                     ],
                     height: 300,
                     autoParagraph: false
@@ -98,7 +98,7 @@
     }
     input[type="text"], textarea {
         display: block;
-        width: 100%;
+        width: 96%;
         padding: 8px;
     }
     textarea {

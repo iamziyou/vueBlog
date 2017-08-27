@@ -1,7 +1,7 @@
 <template>
     <div v-theme:column="'wide'" id="showBlogs">
         <h1>All Blog Articles</h1>
-        <input type="text" v-model="search" placeholder="Search Blogs">
+        <!--<input type="text" v-model="search" placeholder="Search Blogs">-->
         <div v-for="blog in posts"  class="singleBlog">
             <span v-on:click="removePost(blog)">
                 <i class="fa fa-remove"></i>
@@ -125,5 +125,4 @@
          position: absolute;
          right: 200px;
      }
-
 </style>
